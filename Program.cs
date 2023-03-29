@@ -7,6 +7,11 @@ namespace SearchFiles
     {
         static void Main(string[] args)
         {
+            DataEntry();
+        }
+
+        public static void DataEntry()
+        {
             Console.Write("Enter directory for search: ");
             string _MyDirecTory = Console.ReadLine();
 
@@ -29,7 +34,7 @@ namespace SearchFiles
 
             _FileInfo _File = new _FileInfo();
             _File.GetFiles(_MyDirecTory, _Extension);
-            
+
             Console.ReadLine();
         }
     }
