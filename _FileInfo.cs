@@ -1,9 +1,8 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
 
-namespace ConsoleApp3
+
+namespace SearchFiles
 {
     internal class _FileInfo
     {
