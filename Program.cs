@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.IO;
 
 namespace SearchFiles
 {
@@ -32,10 +32,41 @@ namespace SearchFiles
 
             Console.WriteLine();
 
-            _FileInfo _File = new _FileInfo();
-            _File.GetFiles(_MyDirecTory, _Extension);
+            _FileInfo _FInfo = new _FileInfo();
+
+            _GetFiles(_FInfo.GetDirectory(_MyDirecTory), _Extension);
 
             Console.ReadLine();
         }
+
+
+        public static void _GetFiles(string _Directory, string _Extension)
+        {
+            DirectoryInfo directory = new DirectoryInfo(_Directory);
+
+            if (directory.Exists)
+            {
+                // Делаем обход папки
+                foreach (FileInfo file in directory.GetFiles())
+                {
+                    string _FileName = file.Name;
+                    long _FileSize = file.Length;
+                    DateTime _LastWriteDate = file.LastWriteTime;
+
+                    // Проверям, на совпадение с расширением
+                    if (file.Extension == _Extension)
+                    {
+                        Console.WriteLine("File Name: {0}, File Size: {1}, Last write time: {2}", _FileName, _FileSize, _LastWriteDate);
+                    }
+
+                }
+            }
+            else
+            {
+                Console.WriteLine("Directory is not found");
+            }
+
+        }
+
     }
 }
