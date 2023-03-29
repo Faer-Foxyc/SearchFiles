@@ -7,7 +7,7 @@ namespace SearchFiles
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter dirrectory for search: ");
+            Console.Write("Enter directory for search: ");
             string _MyDirecTory = Console.ReadLine();
 
             while (_MyDirecTory == string.Empty)
