@@ -56,7 +56,7 @@ namespace SearchFiles
                     // Проверям, на совпадение с расширением
                     if (file.Extension == _Extension)
                     {
-                        Console.WriteLine("File Name: {0}, File Size: {1}, Last write time: {2}", _FileName, _FileSize, _LastWriteDate);
+                        Console.WriteLine($"File Name: {_FileName}, File Size: {_FileSize}, Last write time: {_LastWriteDate}");
                     }
 
                 }
