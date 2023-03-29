@@ -32,7 +32,7 @@ namespace SearchFiles
 
             Console.WriteLine();
 
-            _FileInfo _FInfo = new _FileInfo();
+            _GetDirectory _FInfo = new _GetDirectory();
 
             _GetFiles(_FInfo.GetDirectory(_MyDirecTory), _Extension);
 
@@ -42,10 +42,10 @@ namespace SearchFiles
 
         public static void _GetFiles(string _Directory, string _Extension)
         {
-            DirectoryInfo directory = new DirectoryInfo(_Directory);
-
-            if (directory.Exists)
+            if (_Directory != "")
             {
+                DirectoryInfo directory = new DirectoryInfo(_Directory);
+
                 // Делаем обход папки
                 foreach (FileInfo file in directory.GetFiles())
                 {

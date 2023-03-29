@@ -4,13 +4,8 @@ using System.IO;
 
 namespace SearchFiles
 {
-    internal class _FileInfo
+    internal class _GetDirectory
     {
-        public string _Extension { get; set; }
-        public string _FileName { get; set; } = string.Empty;   
-        public long _FileSize { get; set; }
-        public DateTime _LastWriteDate { get; set; }
-
         public string GetDirectory(string _Directory)
         {
             DirectoryInfo directory = new DirectoryInfo(_Directory);
@@ -21,10 +16,8 @@ namespace SearchFiles
             }
             else
             {
-                return "Directory is not found";
+                return string.Empty;
             }
-
         }
-
     }
 }
