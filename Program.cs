@@ -12,8 +12,7 @@ namespace SearchFiles
 
         public static void DataEntry()
         {
-            Console.Write("Enter directory for search: ");
-            string _MyDirecTory = Console.ReadLine();
+            string _MyDirecTory = string.Empty;
 
             while (_MyDirecTory == string.Empty)
             {
@@ -21,8 +20,7 @@ namespace SearchFiles
                 _MyDirecTory = Console.ReadLine();
             }
 
-            Console.Write("Enter extension for search: ");
-            string _Extension = Console.ReadLine();
+            string _Extension = string.Empty;
 
             while (_Extension == string.Empty)
             {
