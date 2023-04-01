@@ -10,11 +10,16 @@ namespace SearchFiles
             DataEntry();
         }
 
+        /// <summary>
+        /// _MyDirectory - путь где искать файлы
+        /// _Extension - расширение файлов
+        /// Метод для введения данных
+        /// </summary>
         public static void DataEntry()
         {
             string _MyDirecTory = string.Empty;
 
-            while (_MyDirecTory == string.Empty)
+            while (_MyDirecTory == string.Empty) // просим Вводить Пока Не Заполнят
             {
                 Console.Write("Enter dirrectory for search:  ");
                 _MyDirecTory = Console.ReadLine();
@@ -30,9 +35,9 @@ namespace SearchFiles
 
             Console.WriteLine();
 
-            _GetDirectory _FInfo = new _GetDirectory();
+            _GetDirectory _FInfo = new _GetDirectory(_MyDirecTory, _Extension);
 
-            _GetFiles(_FInfo.GetDirectory(_MyDirecTory), _Extension);
+            _GetFiles(_FInfo._path, _FInfo._extension);
 
             Console.ReadLine();
         }
