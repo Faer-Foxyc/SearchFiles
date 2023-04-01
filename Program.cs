@@ -8,6 +8,7 @@ namespace SearchFiles
         static void Main(string[] args)
         {
             DataEntry();
+            Console.ReadLine();
         }
 
         /// <summary>
@@ -18,7 +19,6 @@ namespace SearchFiles
         public static void DataEntry()
         {
             string _MyDirecTory = string.Empty;
-
             while (_MyDirecTory == string.Empty) // просим Вводить Пока Не Заполнят
             {
                 Console.Write("Enter dirrectory for search:  ");
@@ -26,7 +26,6 @@ namespace SearchFiles
             }
 
             string _Extension = string.Empty;
-
             while (_Extension == string.Empty)
             {
                 Console.Write("Enter extension for search: ");
@@ -38,8 +37,6 @@ namespace SearchFiles
             _GetDirectory _FInfo = new _GetDirectory(_MyDirecTory, _Extension);
 
             _GetFiles(_FInfo._path, _FInfo._extension);
-
-            Console.ReadLine();
         }
 
 
@@ -52,16 +49,11 @@ namespace SearchFiles
                 // Делаем обход папки
                 foreach (FileInfo file in directory.GetFiles())
                 {
-                    string _FileName = file.Name;
-                    long _FileSize = file.Length;
-                    DateTime _LastWriteDate = file.LastWriteTime;
-
                     // Проверям, на совпадение с расширением
                     if (file.Extension == _Extension)
                     {
-                        Console.WriteLine($"File Name: {_FileName}, File Size: {_FileSize}, Last write time: {_LastWriteDate}");
+                        Console.WriteLine($"File Name: {file.Name}, File Size: {file.Length}, Last write time: {file.LastWriteTime}");
                     }
-
                 }
             }
             else
