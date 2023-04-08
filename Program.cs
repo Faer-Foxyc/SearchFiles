@@ -1,14 +1,51 @@
 ﻿using System;
 using System.IO;
 
+
 namespace SearchFiles
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            var _answer = "";
+
             DataEntry();
+
+            while (_answer != "No")
+            {
+                Console.WriteLine();
+                Console.Write("You want Continue? Yes/No: ");
+                _answer = Console.ReadLine();
+                Console.WriteLine();
+
+                Repit(_answer);
+            }
             Console.ReadLine();
+        }
+
+        public static void Repit(string _answer) // проверяем ответ и выполняем действия
+        {
+            switch (_answer)
+            {
+                case "Yes":
+                    DataEntry();
+                    break;
+                case "Y":
+                    DataEntry();
+                    break;
+                case "yes":
+                    DataEntry();
+                    break;   
+                case "no":
+                    Environment.Exit(0);
+                    break;
+                case "No":
+                    Environment.Exit(0);
+                    break;
+                default: Environment.Exit(0);
+                    break;
+            }
         }
 
         /// <summary>
@@ -35,12 +72,10 @@ namespace SearchFiles
             Console.WriteLine();
 
             _GetDirectory _FInfo = new _GetDirectory(_MyDirecTory, _Extension);
-
-            _GetFiles(_FInfo._path, _FInfo._extension);
+            _GetFiles(_FInfo.GetDirectory(), _FInfo._extension);
         }
 
-
-        public static void _GetFiles(string _Directory, string _Extension)
+        public static void _GetFiles(string _Directory, string _Extension) // метод для получения файлов
         {
             if (_Directory != "")
             {
