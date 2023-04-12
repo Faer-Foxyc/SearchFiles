@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SearchFiles.Classes;
+using System;
+using System.Collections.Generic;
 using System.IO;
 
 
@@ -8,10 +10,18 @@ namespace SearchFiles
     {
         static void Main(string[] args)
         {
+
+            Console.Write("___________Menu__________");
+            Console.WriteLine();
+            _MenuClass _Menu = new _MenuClass();
+            _Menu._OutMenu();
+            Console.Write("_________________________");
+            Console.Write("\n\nEnter number: ");
+            string _number = Console.ReadLine(); // просим ввести цифру меню
+
+            ProcessInput(_number);
+
             var _answer = "";
-
-            DataEntry();
-
             while (_answer != "No")
             {
                 Console.WriteLine();
@@ -58,7 +68,7 @@ namespace SearchFiles
             string _MyDirecTory = string.Empty;
             while (_MyDirecTory == string.Empty) // просим Вводить Пока Не Заполнят
             {
-                Console.Write("Enter dirrectory for search:  ");
+                Console.Write("\nEnter dirrectory for search:  ");
                 _MyDirecTory = Console.ReadLine();
             }
 
@@ -87,7 +97,7 @@ namespace SearchFiles
                     // Проверям, на совпадение с расширением
                     if (file.Extension == _Extension)
                     {
-                        Console.WriteLine($"File Name: {file.Name}, File Size: {file.Length}, Last write time: {file.LastWriteTime}");
+                        Console.WriteLine($"File Name: {file.Name}, File Size: {file.Length}, Creation time: {file.CreationTime}, Last write time: {file.LastWriteTime}");
                     }
                 }
             }
@@ -98,5 +108,22 @@ namespace SearchFiles
 
         }
 
+        public static void ProcessInput(string _numb) // обрабатываем ввод, выполняем действия согласно меню
+        {
+            switch (_numb)
+            {
+                case "1":
+                    DataEntry();
+                    break;
+                case "2":
+                    break;
+                case "3":
+                    break;
+                case "4":
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
