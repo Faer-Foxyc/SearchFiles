@@ -2,6 +2,5 @@
 
 Простая консольная программа, для поиска файла в указанной директории и указанным расширением файла
 
-![image](https://user-images.githubusercontent.com/75839381/228434365-6a4e3abc-75b4-470f-b9af-51d29973ec43.png)
-![image](https://user-images.githubusercontent.com/75839381/230734443-c8ba0041-acdd-425f-94fa-658ae68621da.png)
+![image](https://user-images.githubusercontent.com/75839381/231366283-5dac16e0-ff05-4949-8ed6-2cb6b5288696.png)
 
