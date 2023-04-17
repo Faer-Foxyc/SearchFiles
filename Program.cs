@@ -21,19 +21,19 @@ namespace SearchFiles
 
             /// методы ---------------------------------------------------------------------------------
 
-            ProcessInput(_number);
+            CheckNumber(_number);
             
             /// конец ----------------------------------------------------------------------------------
 
             Console.ReadLine();
         }
 
-        public static void ProcessInput(string _numb) // обрабатываем ввод, выполняем действия согласно меню
+        public static void CheckNumber(string _numb) // обрабатываем ввод, выполняем действия согласно меню
         {
             switch (_numb)
             {
                 case "1":
-                    DataEntry();
+                    FilesOutput();
                     break;
                 case "2":
                     break;
@@ -51,7 +51,7 @@ namespace SearchFiles
         /// _Extension - расширение файлов
         /// Метод для введения данных
         /// </summary>
-        public static void DataEntry()
+        public static void FilesOutput()
         {
             string _myDirecTory = string.Empty;
             while (_myDirecTory == string.Empty) // просим Вводить Пока Не Заполнят
