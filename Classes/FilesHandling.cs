@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SearchFiles.Classes
 {
@@ -16,21 +13,20 @@ namespace SearchFiles.Classes
             _pathUser = _path;
             _extensionUser = _extension;
         }
-        public List<String> GetFiles(string _userPath, string _userExtension)
+        public List<String> GetFiles()
         {
             var _files = new List<String>();
-            DirectoryInfo _directory = new DirectoryInfo(_userPath);
+            DirectoryInfo _directory = new DirectoryInfo(_path);
             if (_directory.Exists)
             {
                 foreach (FileInfo _file in _directory.GetFiles())
                 {
-                    if (_file.Extension == _userExtension)
+                    if (_file.Extension == _extension)
                     {
                         _files.Add($"{_file.Name}, Data create: {_file.CreationTime}, File size: {_file.Length}");
                     }
                 }
             }
-
             return _files; 
         }
     }

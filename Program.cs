@@ -1,8 +1,6 @@
 ﻿using SearchFiles.Classes;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
 
 
 namespace SearchFiles
@@ -72,7 +70,7 @@ namespace SearchFiles
             Console.WriteLine();
             
             FilesHandling _filesHandling = new FilesHandling(_myDirecTory, _extension);
-            List<String> _files = _filesHandling.GetFiles(_myDirecTory, _extension);
+            List<String> _files = _filesHandling.GetFiles();
             int _numb = 0;
 
             foreach (var _file in _files)
