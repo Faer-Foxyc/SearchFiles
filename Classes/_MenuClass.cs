@@ -1,21 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 
 namespace SearchFiles.Classes
 {
     internal class _MenuClass
-    {
-        public void _OutMenu()
+    {      
+        public List<string> _OutMenu() // метод класса
         {
-            int _numb = 0;
+            var _options = new List<string> { "Search files", "Delete files", "Read files", "Copy files" };
 
-            Console.WriteLine();
-            string[] _optionsMenu = { "Search files", "Delete files", "Read files", "Copy files" };
-            foreach (var _option in _optionsMenu)
-            {
-                _numb++;
-                Console.WriteLine($"\t{_numb}.{_option}");
-            }
+            return _options;
         }
     }
 }

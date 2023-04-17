@@ -10,10 +10,16 @@ namespace SearchFiles.Classes
         public static string _extension { get; set; }
         public FilesHandling(string _pathUser, string _extensionUser)
         {
-            _pathUser = _path;
-            _extensionUser = _extension;
+            _path = _pathUser;
+            _extension = _extensionUser;
         }
-        public List<String> GetFiles()
+
+        public void Test()
+        {
+            Console.WriteLine();
+        }
+
+        public  List<String> GetFiles()
         {
             var _files = new List<String>();
             DirectoryInfo _directory = new DirectoryInfo(_path);

@@ -10,12 +10,8 @@ namespace SearchFiles
         static void Main(string[] args)
         {
             /// меню -----------------------------------------------------------------------------------
+            Menu();
 
-            Console.Write("___________Menu__________");
-            Console.WriteLine();
-            _MenuClass _Menu = new _MenuClass();
-            _Menu._OutMenu();
-            Console.Write("_________________________");
             Console.Write("\n\nEnter number menu: ");
             string _number = Console.ReadLine(); // просим ввести цифру меню
 
@@ -44,6 +40,22 @@ namespace SearchFiles
                 default:
                     break;
             }
+        }
+
+        public static void Menu()
+        {
+            Console.Write("___________Menu__________");
+            Console.WriteLine();
+            Console.WriteLine();
+            _MenuClass _Menu = new _MenuClass();
+            List<string> _optionsMenu = _Menu._OutMenu();
+            int _count = 0;
+            foreach (var _option in _optionsMenu)
+            {
+                _count++;
+                Console.WriteLine($"    {_count}) {_option}");
+            }
+            Console.Write("_________________________");
         }
 
         /// <summary>
