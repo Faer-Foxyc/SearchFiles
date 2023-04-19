@@ -14,26 +14,42 @@ namespace SearchFiles.Classes
             _extension = _extensionUser;
         }
 
-        public void Test()
-        {
-            Console.WriteLine();
-        }
-
         public  List<String> GetFiles()
         {
-            var _files = new List<String>();
-            DirectoryInfo _directory = new DirectoryInfo(_path);
-            if (_directory.Exists)
+            try
             {
-                foreach (FileInfo _file in _directory.GetFiles())
+                DirectoryInfo _directory = new DirectoryInfo(_path);
+                if (_directory.Exists)
                 {
-                    if (_file.Extension == _extension)
+                    var _files = new List<String>();
+                    // получаем список файлов в директории
+                    foreach (FileInfo _file in _directory.GetFiles())
                     {
-                        _files.Add($"{_file.Name}, Data create: {_file.CreationTime}, File size: {_file.Length}");
+                        if (_file.Extension == _extension | _extension == "")
+                        {
+                            _files.Add($"{_file.Name}, Data create: {_file.CreationTime}, File size: {_file.Length}");
+                        }
                     }
+                    return _files;
                 }
             }
-            return _files; 
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return null;
+        }
+        public void DeleteFile()
+        {
+            try
+            {
+                File.Delete(_path);
+                Console.WriteLine("File deleted");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
