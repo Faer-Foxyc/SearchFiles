@@ -14,6 +14,10 @@ namespace SearchFiles.Classes
             _extension = _extensionUser;
         }
 
+        /// <summary>
+        /// метод формирует найденные файлы и передает в видет списка
+        /// </summary>
+        /// <returns></returns>
         public  List<String> GetFiles()
         {
             try
@@ -25,9 +29,13 @@ namespace SearchFiles.Classes
                     // получаем список файлов в директории
                     foreach (FileInfo _file in _directory.GetFiles())
                     {
-                        if (_file.Extension == _extension | _extension == "")
+                        if (_file.Extension == _extension) // если расширение заполнено
                         {
                             _files.Add($"{_file.Name}, Data create: {_file.CreationTime}, File size: {_file.Length}");
+                        }
+                        else if (_file.Extension == "") // если расширение не заполнено
+                        {
+                            _files.Add($"{_file.FullName}");
                         }
                     }
                     return _files;
@@ -39,12 +47,40 @@ namespace SearchFiles.Classes
             }
             return null;
         }
+
+        /// <summary>
+        ///  Метод удаления файлов
+        /// </summary>
         public void DeleteFile()
         {
             try
             {
-                File.Delete(_path);
-                Console.WriteLine("File deleted");
+                DirectoryInfo directoryInfo = new DirectoryInfo(_path);
+                if (directoryInfo.Exists)
+                {
+                    File.Delete(_path);
+                    Console.WriteLine("File deleted");
+                }
+                else
+                {
+                    Console.WriteLine("Directory is not exist");
+                }
+                
+            }
+            catch (Exception e) // отловим ошибку, если в место директории введут пробелы или tab
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+        private void ReadFile()
+        {
+            try
+            {
+                DirectoryInfo directoryInfo = new DirectoryInfo(_path);
+                if (directoryInfo.Exists)
+                {
+
+                }
             }
             catch (Exception e)
             {

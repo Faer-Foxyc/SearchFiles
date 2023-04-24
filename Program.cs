@@ -1,6 +1,8 @@
 ﻿using SearchFiles.Classes;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using System.Threading;
 
 namespace SearchFiles
@@ -26,7 +28,11 @@ namespace SearchFiles
             Thread.Sleep(1000);
             
         }
-
+        /// <summary>
+        /// проверка номера и запуск метода
+        /// </summary>
+        /// параметр который принимает число
+        /// <param name="_numb"></param>
         public static void CheckNumber(string _numb) // обрабатываем ввод, выполняем действия согласно меню
         {
             switch (_numb)
@@ -42,10 +48,14 @@ namespace SearchFiles
                     break;
                 case "4":
                     break;
-                default:
+                case "5":
+                    WriteFile();
                     break;
             }
         }
+        /// <summary>
+        /// метод вывода меню
+        /// </summary>
         public static void Menu()
         {
             Console.Write("___________Menu__________");
@@ -61,7 +71,9 @@ namespace SearchFiles
             }
             Console.Write("_________________________");
         }
-        
+        /// <summary>
+        /// метод вывода файла
+        /// </summary>
         public static void FilesOutput() // вывод найденных файлов и немного информации
         {
             while (true)
@@ -109,18 +121,21 @@ namespace SearchFiles
                 }
             }
         }
+        /// <summary>
+        /// метод удаления файла
+        /// </summary>
         public static void DeleteFile() // удаление файла
         {
             while (true) // бесконечный цикл, пока пользователь не введет - no
             {
-                 string _myDirecTory = string.Empty;
-                 while (_myDirecTory == string.Empty) // просим Вводить Пока Не Заполнят
-                 {
-                     Console.Write("\nEnter dirrectory for search:  ");
-                     _myDirecTory = Console.ReadLine();
-                 }
+                string _myDirecTory = string.Empty;
+                while (_myDirecTory == string.Empty) // просим Вводить Пока Не Заполнят
+                {
+                    Console.Write("\nEnter dirrectory for search:  ");
+                    _myDirecTory = Console.ReadLine();
+                }
 
-                 Console.WriteLine();
+                Console.WriteLine();
 
                 FilesHandling filesHandling = new FilesHandling(_myDirecTory, "");
                 filesHandling.DeleteFile();
@@ -133,9 +148,72 @@ namespace SearchFiles
                 }
             }
         }
+        /// <summary>
+        /// метод для чтения файла
+        /// </summary>
         public static void ReadFile() // прочитать файл
         {
+            Console.WriteLine();
+            Console.WriteLine("Hello i can read .txt files");
 
+            while (true) // бесконечный цикл, пока пользователь не введет - no
+            {
+                string myDirecTory = string.Empty;
+                while (myDirecTory == string.Empty) // просим Вводить Пока Не Заполнят
+                {
+                    Console.Write("\nEnter dirrectory for search:  ");
+                    myDirecTory = Console.ReadLine();
+                }
+
+                Console.WriteLine();
+
+                var lines = File.ReadAllLines(myDirecTory, Encoding.UTF8);
+                foreach (var line in lines)
+                {
+                    Console.WriteLine(line);
+                }
+
+                Console.WriteLine();
+                Console.Write("You want continue? (Yes/No): ");
+                if (Console.ReadLine().ToLower() == "no")
+                {
+                    break;
+                }
+            }
+        }
+        /// <summary>
+        /// метод для записи в файл
+        /// </summary>
+        public static void WriteFile() 
+        {
+            Console.WriteLine();
+            Console.WriteLine("Hello i can write .txt files");
+
+            while (true) // бесконечный цикл, пока пользователь не введет - no
+            {
+                string myDirecTory = string.Empty;
+                while (myDirecTory == string.Empty) // просим Вводить Пока Не Заполнят
+                {
+                    Console.Write("\nEnter dirrectory for search:  ");
+                    myDirecTory = Console.ReadLine();
+                }
+
+                Console.WriteLine();
+
+                Console.Write("Enter text: ");
+                var text = Console.ReadLine();
+
+                var file = new StreamWriter(myDirecTory, false, Encoding.UTF8);
+                file.WriteLine(text);
+                file.Close();
+
+                Console.WriteLine();
+                Console.Write("You want continue? (Yes/No): ");
+                if (Console.ReadLine().ToLower() == "no")
+                {
+                    break;
+                }
+            }
         }
     }
 }
