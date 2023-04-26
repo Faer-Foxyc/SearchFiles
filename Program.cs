@@ -47,6 +47,7 @@ namespace SearchFiles
                     ReadFile();
                     break;
                 case "4":
+                    CopyFile();
                     break;
                 case "5":
                     WriteFile();
@@ -206,6 +207,48 @@ namespace SearchFiles
                 var file = new StreamWriter(myDirecTory, false, Encoding.UTF8);
                 file.WriteLine(text);
                 file.Close();
+
+                Console.WriteLine();
+                Console.Write("You want continue? (Yes/No): ");
+                if (Console.ReadLine().ToLower() == "no")
+                {
+                    break;
+                }
+            }
+        }
+        public static void CopyFile()
+        {
+            Console.WriteLine();
+            while (true)
+            {
+                var firstDirectory = "";
+                while (firstDirectory == "")
+                {
+                    Console.Write("Enter directory for copy file: ");
+                    firstDirectory = Console.ReadLine();
+                }
+
+                Console.WriteLine();
+
+                var secondDirectory = "";
+                while (secondDirectory == "")
+                {
+                    Console.Write("Enter second directory, where need copy file: ");
+                    secondDirectory = Console.ReadLine();
+                }
+
+                try
+                {
+                    FileInfo fileInfo= new FileInfo(firstDirectory);
+                    if (fileInfo.Exists)
+                    {
+                        fileInfo.CopyTo(secondDirectory + fileInfo.Name, true);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
 
                 Console.WriteLine();
                 Console.Write("You want continue? (Yes/No): ");
